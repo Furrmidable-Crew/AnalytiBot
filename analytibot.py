@@ -1,4 +1,5 @@
 from cat.mad_hatter.decorators import hook, tool
+from cat.utils import get_static_url
 from cat.plugins.analytibot.parser import DataSetParser
 from cat.plugins.analytibot.bot import get_dt_columns_info, extract_code, filter_rows
 import pandas as pd
@@ -24,7 +25,7 @@ def interpret_code(response):
 def analyze_dataset(request, cat):
     """
     A plugin used to analyze a dataset when requested.
-    The input is the data analysis phrase to perform for a desired dataset.
+    The input is the data analysis phrase to perform for a desired dataset, it should start with something like 'Analyze the dataset for ...'
     """
 
     if df is None:
@@ -45,23 +46,19 @@ def analyze_dataset(request, cat):
         
         Perform this analysis:
         {request}""")
-    
-    print(response)
 
     has_code = interpret_code(response)
 
     final_message = ""
 
     if has_code:
-        final_message = f"""
-            <img alt='{request}' src='{cat.get_static_url()}/analytibot_plot.png' />
-            {response.split("```")[-1]}"""
+        final_message = f"<img alt='{request}' src='{get_static_url()}analytibot_plot.png' />{response.split("```")[-1]}"
     else:
         final_message = response
 
     return final_message
 
-@hook(priority=3)
+@hook
 def before_rabbithole_splits_text(text: list, cat):
     
     is_dataset = text[0].metadata["source"] == "analytibot"
