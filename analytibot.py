@@ -1,7 +1,7 @@
 from cat.mad_hatter.decorators import hook, tool
 from cat.utils import get_static_url
-from cat.plugins.analytibot.parser import DataSetParser
-from cat.plugins.analytibot.bot import get_dt_columns_info, extract_code, filter_rows
+from .parser import DataSetParser
+from .bot import get_dt_columns_info, extract_code, filter_rows
 import pandas as pd
 import matplotlib.pyplot as plt
 import chardet
