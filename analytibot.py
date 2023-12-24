@@ -52,7 +52,7 @@ def analyze_dataset(request, cat):
     final_message = ""
 
     if has_code:
-        final_message = f"<img alt='{request}' src='{get_static_url()}analytibot_plot.png' />{response.split("```")[-1]}"
+        final_message = f'<img alt="{request}" src="{get_static_url()}analytibot_plot.png" />{response.split("```")[-1]}'
     else:
         final_message = response
 
