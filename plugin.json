@@ -1,6 +1,6 @@
 {
     "name": "AnalytiBot",
-    "version": "0.0.3",
+    "version": "0.0.5",
     "description": "The virtual Data Analyst of InferentiaXYZ translated to a Cheshire Cat plugin! Upload a .csv or .xlsx file and then ask the Cat something that starts with 'Analyze the dataset for ...'",
     "author_name": "zAlweNy26",
     "author_url": "https://github.com/zAlweNy26",
